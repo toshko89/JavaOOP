@@ -4,7 +4,7 @@ public abstract class Animal {
     private String animalName;
     private String animalType;
     private double animalWeigth;
-    private int foodEaten = 0;
+    private int foodEaten;
 
     public Animal(String animalName, String animalType, double animalWeigth) {
         this.animalName = animalName;
@@ -16,24 +16,12 @@ public abstract class Animal {
         return animalName;
     }
 
-    public void setAnimalName(String animalName) {
-        this.animalName = animalName;
-    }
-
     public String getAnimalType() {
         return animalType;
     }
 
-    public void setAnimalType(String animalType) {
-        this.animalType = animalType;
-    }
-
     public double getAnimalWeigth() {
         return animalWeigth;
-    }
-
-    public void setAnimalWeigth(double animalWeigth) {
-        this.animalWeigth = animalWeigth;
     }
 
     public int getFoodEaten() {
@@ -45,5 +33,7 @@ public abstract class Animal {
     }
 
     abstract void makeSound();
+
     abstract void eat(Food food);
+
 }

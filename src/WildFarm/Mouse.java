@@ -1,8 +1,10 @@
 package WildFarm;
 
+import java.text.DecimalFormat;
+
 public class Mouse extends Mammal {
-    public Mouse(String animalName, double animalWeigth, String livingRegion) {
-        super(animalName, "Mouse", animalWeigth, livingRegion);
+    public Mouse(String animalName, String animalType, double animalWeigth, String livingRegion) {
+        super(animalName, animalType, animalWeigth, livingRegion);
     }
 
     @Override
@@ -13,9 +15,15 @@ public class Mouse extends Mammal {
     @Override
     void eat(Food food) {
         if (food instanceof Vegetable) {
-            this.setFoodEaten(food.getQuantity());
+            this.setFoodEaten(this.getFoodEaten() + food.getQuantity());
         } else {
-            System.out.println("Mise are not eating that type of food!");
+            System.out.println("Mice are not eating that type of food!");
         }
+    }
+
+    DecimalFormat df = new DecimalFormat("#.#");
+    @Override
+    public String toString() {
+        return String.format("%s[%s, %s, %s, %d]", super.getAnimalType(), this.getAnimalName(), df.format(this.getAnimalWeigth()), this.getLivingRegion(), this.getFoodEaten());
     }
 }

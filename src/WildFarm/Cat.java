@@ -1,15 +1,13 @@
 package WildFarm;
 
+import java.text.DecimalFormat;
+
 public class Cat extends Felime {
     private String breed;
 
-    public Cat(String animalName, double animalWeigth, String livingRegion, String breed) {
-        super(animalName, "Cats", animalWeigth, livingRegion);
+    public Cat(String animalName, String animalType, double animalWeigth, String livingRegion, String breed) {
+        super(animalName, animalType, animalWeigth, livingRegion);
         this.breed = breed;
-    }
-
-    public String getBreed() {
-        return breed;
     }
 
     @Override
@@ -19,6 +17,17 @@ public class Cat extends Felime {
 
     @Override
     void eat(Food food) {
-        this.setFoodEaten(food.getQuantity());
+        if (food instanceof Meat) {
+            System.out.println("Cats are not eating that type of food!");
+        } else {
+            this.setFoodEaten(this.getFoodEaten() + food.getQuantity());
+        }
+    }
+
+    DecimalFormat df = new DecimalFormat("#.#");
+
+    @Override
+    public String toString() {
+        return String.format("%s[%s, %s, %s, %s, %d]", super.getAnimalType(), this.getAnimalName(), this.breed,df.format(this.getAnimalWeigth()), this.getLivingRegion(),  this.getFoodEaten());
     }
 }

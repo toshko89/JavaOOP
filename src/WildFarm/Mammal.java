@@ -12,4 +12,8 @@ public abstract class Mammal extends Animal{
         return livingRegion;
     }
 
+    public void setLivingRegion(String livingRegion) {
+        this.livingRegion = livingRegion;
+    }
+
 }
